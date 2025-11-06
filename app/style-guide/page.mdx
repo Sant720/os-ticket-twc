@@ -1,0 +1,523 @@
+---
+title: "MDX Style Guide"
+description: "A reference guide for all formatting components available in Nextra"
+---
+
+import { Callout } from 'nextra/components'
+import { Steps } from 'nextra/components'
+import { Tabs } from 'nextra/components'
+import { FileTree } from 'nextra/components'
+
+# MDX Style Guide
+
+This page contains copy-paste examples of all common formatting components you can use in your documentation.
+
+---
+
+## Callouts
+
+### Info Callout
+```mdx
+import { Callout } from 'nextra/components'
+
+<Callout type="info">
+  This is an informational callout. Use it for helpful tips and general information.
+</Callout>
+```
+
+<Callout type="info">
+  This is an informational callout. Use it for helpful tips and general information.
+</Callout>
+
+### Warning Callout
+```mdx
+<Callout type="warning">
+  This is a warning callout. Use it to caution users about potential issues.
+</Callout>
+```
+
+<Callout type="warning">
+  This is a warning callout. Use it to caution users about potential issues.
+</Callout>
+
+### Error Callout
+```mdx
+<Callout type="error">
+  This is an error callout. Use it for critical information or errors.
+</Callout>
+```
+
+<Callout type="error">
+  This is an error callout. Use it for critical information or errors.
+</Callout>
+
+### Default Callout
+```mdx
+<Callout>
+  This is a default callout with neutral styling.
+</Callout>
+```
+
+<Callout>
+  This is a default callout with neutral styling.
+</Callout>
+
+### Custom Emoji Callout
+```mdx
+<Callout emoji="💡">
+  Custom emoji callout with a lightbulb icon.
+</Callout>
+```
+
+<Callout emoji="💡">
+  Custom emoji callout with a lightbulb icon.
+</Callout>
+
+---
+
+## Tables
+
+### Basic Table
+```mdx
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Row 1    | Data     | More     |
+| Row 2    | Data     | More     |
+| Row 3    | Data     | More     |
+```
+
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Row 1    | Data     | More     |
+| Row 2    | Data     | More     |
+| Row 3    | Data     | More     |
+
+### Aligned Table
+```mdx
+| Left Aligned | Center Aligned | Right Aligned |
+|:-------------|:--------------:|--------------:|
+| Left         | Center         | Right         |
+| Text         | Text           | Text          |
+```
+
+| Left Aligned | Center Aligned | Right Aligned |
+|:-------------|:--------------:|--------------:|
+| Left         | Center         | Right         |
+| Text         | Text           | Text          |
+
+### Configuration Table Example
+```mdx
+| Setting      | Value        | Description                    |
+|--------------|--------------|--------------------------------|
+| PHP Version  | 8.1 - 8.2    | Required PHP version range     |
+| MySQL        | 5.0+         | Minimum database version       |
+| Web Server   | Apache/Nginx | Supported web servers          |
+```
+
+| Setting      | Value        | Description                    |
+|--------------|--------------|--------------------------------|
+| PHP Version  | 8.1 - 8.2    | Required PHP version range     |
+| MySQL        | 5.0+         | Minimum database version       |
+| Web Server   | Apache/Nginx | Supported web servers          |
+
+---
+
+## Code Blocks
+
+### Basic Code Block
+````mdx
+```javascript
+function hello() {
+  console.log("Hello, World!");
+}
+```
+````
+
+```javascript
+function hello() {
+  console.log("Hello, World!");
+}
+```
+
+### Code Block with Filename
+````mdx
+```javascript filename="app.js"
+const express = require('express');
+const app = express();
+```
+````
+
+```javascript filename="app.js"
+const express = require('express');
+const app = express();
+```
+
+### Code Block with Line Highlighting
+````mdx
+```javascript {2,4-6}
+function example() {
+  const highlighted = true; // This line is highlighted
+  const normal = false;
+  // These lines
+  // are also
+  // highlighted
+}
+```
+````
+
+```javascript {2,4-6}
+function example() {
+  const highlighted = true; // This line is highlighted
+  const normal = false;
+  // These lines
+  // are also
+  // highlighted
+}
+```
+
+### Inline Code
+```mdx
+Use `inline code` for short code snippets or commands like `npm install`.
+```
+
+Use `inline code` for short code snippets or commands like `npm install`.
+
+---
+
+## Steps
+
+```mdx
+import { Steps } from 'nextra/components'
+
+<Steps>
+### Step 1: Download osTicket
+ 
+Download the latest version from the official website.
+ 
+### Step 2: Extract Files
+ 
+Extract the archive to your web server directory.
+ 
+### Step 3: Configure Settings
+ 
+Run the web installer and follow the prompts.
+</Steps>
+```
+
+<Steps>
+### Step 1: Download osTicket
+ 
+Download the latest version from the official website.
+ 
+### Step 2: Extract Files
+ 
+Extract the archive to your web server directory.
+ 
+### Step 3: Configure Settings
+ 
+Run the web installer and follow the prompts.
+</Steps>
+
+---
+
+## Tabs
+
+```mdx
+import { Tabs } from 'nextra/components'
+
+<Tabs items={['npm', 'yarn', 'pnpm']}>
+  <Tabs.Tab>**npm**: `npm install package-name`</Tabs.Tab>
+  <Tabs.Tab>**yarn**: `yarn add package-name`</Tabs.Tab>
+  <Tabs.Tab>**pnpm**: `pnpm add package-name`</Tabs.Tab>
+</Tabs>
+```
+
+<Tabs items={['npm', 'yarn', 'pnpm']}>
+  <Tabs.Tab>**npm**: `npm install package-name`</Tabs.Tab>
+  <Tabs.Tab>**yarn**: `yarn add package-name`</Tabs.Tab>
+  <Tabs.Tab>**pnpm**: `pnpm add package-name`</Tabs.Tab>
+</Tabs>
+
+---
+
+## File Tree
+
+```mdx
+import { FileTree } from 'nextra/components'
+
+<FileTree>
+  <FileTree.Folder name="app" defaultOpen>
+    <FileTree.Folder name="docs">
+      <FileTree.File name="page.mdx" />
+      <FileTree.File name="_meta.json" />
+    </FileTree.Folder>
+    <FileTree.File name="layout.tsx" />
+    <FileTree.File name="globals.css" />
+  </FileTree.Folder>
+  <FileTree.Folder name="public">
+    <FileTree.File name="favicon.ico" />
+  </FileTree.Folder>
+  <FileTree.File name="package.json" />
+  <FileTree.File name="next.config.mjs" />
+</FileTree>
+```
+
+<FileTree>
+  <FileTree.Folder name="app" defaultOpen>
+    <FileTree.Folder name="docs">
+      <FileTree.File name="page.mdx" />
+      <FileTree.File name="_meta.json" />
+    </FileTree.Folder>
+    <FileTree.File name="layout.tsx" />
+    <FileTree.File name="globals.css" />
+  </FileTree.Folder>
+  <FileTree.Folder name="public">
+    <FileTree.File name="favicon.ico" />
+  </FileTree.Folder>
+  <FileTree.File name="package.json" />
+  <FileTree.File name="next.config.mjs" />
+</FileTree>
+
+---
+
+## Text Formatting
+
+### Basic Formatting
+```mdx
+**Bold text** for emphasis
+
+*Italic text* for slight emphasis
+
+***Bold and italic*** for strong emphasis
+
+~~Strikethrough~~ for deprecated content
+
+`inline code` for code snippets
+```
+
+**Bold text** for emphasis
+
+*Italic text* for slight emphasis
+
+***Bold and italic*** for strong emphasis
+
+~~Strikethrough~~ for deprecated content
+
+`inline code` for code snippets
+
+### Headers
+```mdx
+# H1 Heading
+## H2 Heading
+### H3 Heading
+#### H4 Heading
+##### H5 Heading
+###### H6 Heading
+```
+
+---
+
+## Lists
+
+### Unordered List
+```mdx
+- First item
+- Second item
+  - Nested item
+  - Another nested item
+- Third item
+```
+
+- First item
+- Second item
+  - Nested item
+  - Another nested item
+- Third item
+
+### Ordered List
+```mdx
+1. First step
+2. Second step
+   1. Sub-step A
+   2. Sub-step B
+3. Third step
+```
+
+1. First step
+2. Second step
+   1. Sub-step A
+   2. Sub-step B
+3. Third step
+
+### Task List
+```mdx
+- [x] Completed task
+- [ ] Incomplete task
+- [ ] Another incomplete task
+```
+
+- [x] Completed task
+- [ ] Incomplete task
+- [ ] Another incomplete task
+
+---
+
+## Links and Images
+
+### Internal Link
+```mdx
+[Link to another page](/docs/doc2-post-install)
+```
+
+[Link to another page](/docs/doc2-post-install)
+
+### External Link
+```mdx
+[External link](https://osticket.com)
+```
+
+[External link](https://osticket.com)
+
+### Image
+```mdx
+![Alt text](/image.png)
+```
+
+### Image with Link
+```mdx
+[![Alt text](/image.png)](https://example.com)
+```
+
+---
+
+## Blockquotes
+
+```mdx
+> This is a blockquote.
+> It can span multiple lines.
+>
+> And multiple paragraphs.
+```
+
+> This is a blockquote.
+> It can span multiple lines.
+>
+> And multiple paragraphs.
+
+### Nested Blockquote
+```mdx
+> First level
+>> Second level
+>>> Third level
+```
+
+> First level
+>> Second level
+>>> Third level
+
+---
+
+## Horizontal Rules
+
+```mdx
+Use three or more hyphens, asterisks, or underscores:
+
+---
+
+***
+
+___
+```
+
+---
+
+## Keyboard Keys
+
+```mdx
+Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy.
+
+Press <kbd>⌘</kbd> + <kbd>V</kbd> to paste on Mac.
+```
+
+Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy.
+
+Press <kbd>⌘</kbd> + <kbd>V</kbd> to paste on Mac.
+
+---
+
+## HTML Elements
+
+You can use HTML elements directly in MDX:
+
+```mdx
+<details>
+  <summary>Click to expand</summary>
+  
+  This content is hidden until you click the summary.
+  
+  You can include any markdown here:
+  - Lists
+  - **Bold text**
+  - Code blocks
+</details>
+```
+
+<details>
+  <summary>Click to expand</summary>
+  
+  This content is hidden until you click the summary.
+  
+  You can include any markdown here:
+  - Lists
+  - **Bold text**
+  - Code blocks
+</details>
+
+---
+
+## Combining Components
+
+You can combine multiple components for rich documentation:
+
+```mdx
+<Callout type="info" emoji="📚">
+  **Best Practice**: Always combine components thoughtfully.
+  
+  <Steps>
+  ### Plan Your Content
+  Think about what you want to communicate.
+  
+  ### Choose Components
+  Select the right components for your message.
+  
+  ### Test and Refine
+  Preview your content and make adjustments.
+  </Steps>
+</Callout>
+```
+
+<Callout type="info" emoji="📚">
+  **Best Practice**: Always combine components thoughtfully.
+  
+  <Steps>
+  ### Plan Your Content
+  Think about what you want to communicate.
+  
+  ### Choose Components
+  Select the right components for your message.
+  
+  ### Test and Refine
+  Preview your content and make adjustments.
+  </Steps>
+</Callout>
+
+---
+
+## Tips for Using This Guide
+
+<Callout emoji="💡">
+- Click the copy button in any code block to copy the example
+- Preview your changes locally before committing
+- Use consistent formatting throughout your documentation
+- Refer to this page whenever you need a formatting reference
+</Callout>

@@ -1,38 +1,69 @@
 ---
-title: Get started
-description: High-level overview of the documentation portal.
+title: "Getting started"
+description: "Learn how to install osTicket using its web-based installer, including prerequisites, setup steps, and troubleshooting tips."
+tags: ["installation", "setup", "osTicket", "web server", "PHP", "MySQL"]
 ---
 
-# Get started 
+import { Callout } from 'nextra/components'
 
-Welcome to the OS Ticket TWC knowledge base. This hub explains how the project is structured, how to run it locally, and where to contribute. Use the sidebar to jump into specific guides or follow the quick links below.
+# Getting started
 
-## Quick Links
+This guide walks you through installing osTicket using its built-in web installer. It’s designed for users with a basic understanding of web servers, PHP, and MySQL. By the end, you’ll have a fully functional osTicket instance up and running, ready for configuration and use.
 
-- [Getting Started](./get-started) — install dependencies and spin up the local dev environment.
-- [Architecture](#architecture-overview) — learn how the app is composed.
-- [Contributing](#contributing) — guidelines and tooling expectations.
+## About osTicket
 
-## How to Install osTicket
+osTicket is a free, open-source helpdesk system that streamlines how organizations manage support requests. It centralizes tickets from multiple channels—like email, web forms, and phone calls—into a single, easy-to-use dashboard. Designed for teams of all sizes, osTicket helps automate assignments, track performance, and ensure timely responses through built-in features like SLAs, canned replies, and customizable workflows. Whether you’re setting up an IT helpdesk or customer support center, osTicket offers a powerful and flexible foundation to get started quickly.
 
-The documentation site uses **Next.js 16** with the **Nextra Docs Theme**. Content lives under the `app/docs` directory as `.mdx` files, allowing you to mix Markdown with React components.
+---
 
-Key directories:
+## Prerequisites
 
-- `app/` — Next.js App Router entry point.
-- `app/docs/*` — documentation pages grouped by topic.
-- `theme.config.tsx` — navigation, sidebar, and footer configuration.
-- `mdx-components.js` — shared MDX components (callouts, badges, etc.).
+Before starting, make sure your server meets the following requirements:
 
-## Contributing
+### Server Requirements
 
-1. Create a feature branch: `git checkout -b docs/my-topic`.
-2. Add or update `.mdx` content and run `npm run dev`.
-3. Verify linting: `npm run lint`.
-4. Commit with a descriptive message and open a pull request.
+- **Web Server:** Apache, LiteSpeed, or IIS (with URL Rewrite enabled)
+- **PHP:** Version 8\.1 – 8\.2 (8\.2 recommended)
+- **Database:** MySQL 5\.0\+ or MariaDB 10\.x
 
-> Tip: keep sections short and action-oriented. Use tables or callouts when they communicate procedures more clearly than prose.
+If you’re unsure, contact your hosting provider or system administrator.
 
-## Next Steps
+### Database Access
 
-Head over to [Getting Started](./get-started) to configure your environment and begin exploring the project.
+You’ll need a MySQL database with:
+- a **valid user**, **password**, and **hostname**
+- **FULL privileges** granted to that user
+
+If unsure, ask your host or database admin before proceeding.
+
+---
+
+## Windows Recommended Links
+
+| Component | Version / Notes | Download |
+|------------|----------------|-----------|
+| PHP | 8\.1 – 8\.2 for Windows Server | [Download](https://windows.php.net/download/) |
+| MySQL | 8\.0 for Windows Server | [Download](https://dev.mysql.com/downloads/installer/) |
+| MariaDB | 10\.11 for Windows Server | [Download](https://mariadb.org/download/) |
+| PHP Manager 2 for IIS | Simplifies PHP management | [Download](https://www.phpmanager.xyz/) |
+
+---
+
+## Getting Started
+
+1. **Download osTicket:**  
+   Get the [latest version](https://osticket.com/download) of osTicket.
+
+2. **Upload the Files:**  
+   Unzip the archive and upload everything inside the `upload` folder to your desired directory, for example:  
+   - `/osticket/`  
+   - `/helpdesk/`  
+   - `/support/`
+
+   Basic FTP knowledge is useful here.  
+   If you’re new to FTP, review your FTP client’s documentation for uploading files and setting permissions.
+
+3. **Set Permissions:**  
+   The installer must be able to write to:
+   ```bash
+   include/ost-config.php
