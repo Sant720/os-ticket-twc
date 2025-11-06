@@ -20,14 +20,6 @@ This guide explains how to configure **incoming email fetching** and **outgoing 
 
 ## Email Templates
 
-osTicket includes a set of default templates for:
-- Auto-responses  
-- Alerts  
-- Notices  
-- Staff and client replies  
-
-You can customize or add new templates by following the [Email Templates Guide](../email-templates).
-
 
 ## Routing Incoming Emails
 
@@ -41,24 +33,6 @@ However, it requires configuration at the mail server level.
 1. Access your hosting control panel or mail server configuration.  
 2. Create an alias or pipe that sends emails directly to osTicket’s pipe handler (usually `pipe.php`).  
 3. Verify that your server supports piping.
-
-> See the [Email Piping Guide](../email-piping) for step-by-step details.
-
-### 2. POP3/IMAP Polling (Scheduled Fetching)
-POP3/IMAP polling is ideal if you cannot modify mail delivery settings (e.g., using Gmail or external hosts).
-
-Each email address in osTicket can be linked to a POP3 or IMAP account.
-
-**To configure POP3/IMAP fetching:**
-1. Go to **Admin Panel → Settings → Email**.  
-2. Check the box for **Email Fetching** to enable it (disabled by default).  
-3. Add your mail server credentials:
-   - Mail Server: `mail.yourdomain.com`
-   - Protocol: POP3 or IMAP
-   - Port: typically 995 (SSL) or 993 (IMAP SSL)
-4. Save the configuration.
-
-> See the [POP3/IMAP Settings Guide](../pop3-imap-settings) for detailed setup steps.
 
 ## Configuring Outgoing Emails
 
@@ -101,99 +75,9 @@ telnet: connect to address 192.0.32.10: Connection refused
 
 In such cases, your hosting provider’s firewall or policy is likely blocking external SMTP traffic.
 
-## Allowing SMTP Spoofing (Optional)
-
-You can enable outgoing address spoofing to prevent osTicket from overwriting custom “From” addresses.
-
-**To enable:**
-1. Navigate to **Admin Panel → Settings → Email Settings**.  
-2. Check **Allow Spoofing (No Overwrite)**.
-
-## Outlook Configuration
-
-<div style={{ position: "relative", paddingBottom: "2%", height: 0, overflow: "hidden", maxWidth: "100%", height: "auto" }}>
-  <iframe
-    width="560"
-    height="315"
-    src="https://www.youtube.com/embed/lBT2qordWFs"
-    frameBorder="0"
-    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen
-  ></iframe>
-</div>
-
-## Gmail Configuration
-
-<div style={{ position: "relative", paddingBottom: "2%", height: 0, overflow: "hidden", maxWidth: "100%", height: "auto" }}>
-  <iframe
-    width="560"
-    height="315"
-    src="https://www.youtube.com/embed/xs1k_ocnfd8"
-    frameBorder="0"
-    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen
-  ></iframe>
-</div>
-
-### Step 1: Enable IMAP or POP in Gmail
-
-1. Log in to your Gmail or Google Workspace account.  
-2. Go to **Settings → Forwarding and POP/IMAP**.  
-3. Enable either POP or IMAP.  
-   - [Enable POP for Gmail](https://support.google.com/mail/answer/7104828?hl=en)  
-   - [Enable IMAP for Gmail](https://support.google.com/mail/answer/7126229?hl=en)
-
-### Step 2: Configure osTicket for Gmail SMTP
-
-In osTicket:
-1. Go to **Admin Panel → Emails → Emails → Sending Email via SMTP**.  
-2. Enter:
-   - Server: `ssl://smtp.gmail.com` (Port 465) or `tls://smtp.gmail.com` (Port 587)  
-   - Username: full email address (e.g., `support\@yourcompany.com`)  
-   - Password: your Gmail or App Password  
-3. Check **Authentication Required** and **leave Header Spoofing unchecked**.  
-4. Save and test.
-
-### Step 3: Check for Common Issues
-
-#### Firewall Restrictions
-- Outgoing ports 465 and 587 must be open.  
-- If using CSF, ensure `SMTP_BLOCK` is disabled or add the osTicket user to `SMTP_ALLOWUSER`.  
-- Add necessary ports to `SMTP_PORTS`.
-
-#### SELinux
-If SELinux is blocking the connection, disable it temporarily to test.  
-If it works when disabled, re-enable it and create a rule allowing outgoing SMTP connections.
-
-#### Gmail Security Settings
-- Ensure “Allow less secure apps” is **enabled** during testing.  
-- For Gmail interface:
-  1. Click your avatar → **My Account**.  
-  2. Go to **Sign-In & Security → Connected Apps and Sites**.  
-  3. Enable **Allow less secure apps**.
-
-> **Note:**  
-> Do not leave this enabled permanently. It should only be used for troubleshooting.
-
-#### G-Suite SMTP Relay (Recommended for Organizations)
-If you’re using Google Workspace (G-Suite), configure an **SMTP Relay Service** instead:
-
-1. Go to **Admin Console → Apps → Google Workspace → Gmail → Advanced Settings → Routing**.  
-2. Add an SMTP relay with:
-   - Allowed senders: your domain or specific IPs  
-   - Authentication: via IP or username/password  
-3. Use `smtp-relay.gmail.com` as your SMTP server in osTicket.
-
-For more details, see [Google’s SMTP Relay Documentation](https://support.google.com/a/answer/2956491?hl=en).
-
 ## Summary
 
 You’ve successfully configured email fetching and outgoing mail in osTicket!  
-Your system can now:
-- Convert incoming emails into tickets  
-- Send notifications and replies through SMTP  
-- Integrate securely with Gmail or Outlook  
 
 For next steps, see:
-- [How to Set Up OAuth 2\.0 Authentication for Email in osTicket](../oauth2-email-setup)
-- [How to Export and Extract Data from osTicket](../exporting-data)
+(Links)
