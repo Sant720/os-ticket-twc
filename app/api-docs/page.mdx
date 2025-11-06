@@ -1,45 +1,17 @@
 ---
-title: API Overview
-description: High-level reference for the OS Ticket TWC API surface.
+title: API documentation
+description: Reference guide for the Dummy Employee REST API, including endpoints, parameters, and sample requests.
 ---
 
-# Dummy API documentation
+# Employee API Reference
 
 Introduction. 
 
 ## Base URL
 
 ```
-https://dummy.restapiexample.com/
+https://dummy.restapiexample.com/api/v1
 ```
 
-## Authentication
 
-Public. 
 
-## Sample Endpoint
-
-```http
-GET /tickets
-```
-
-**Response**
-
-```json
-{
-  "data": [
-    {
-      "id": "TCK-1024",
-      "subject": "Printer offline",
-      "status": "open",
-      "createdAt": "2024-06-18T09:42:11Z"
-    }
-  ]
-}
-```
-
-## Next Steps
-
-- Generate an API key from the admin portal.
-- Review rate limiting details in the upcoming `Rate Limits` page.
-- Explore webhooks to push ticket updates to downstream systems.
