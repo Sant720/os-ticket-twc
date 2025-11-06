@@ -4,6 +4,8 @@ description: "Learn how to configure osTicket after installation, including sett
 tags: ["configuration", "osTicket", "setup", "helpdesk", "email", "departments", "staff"]
 ---
 
+import { Callout } from 'nextra/components'
+
 # How to Configure osTicket After Installation
 
 After installing **osTicket**, you need to perform additional configuration to make your helpdesk fully operational.  
@@ -21,7 +23,7 @@ Once you’re logged in, you can begin configuring your osTicket environment.
 osTicket allows you to route any number of email addresses to create tickets automatically.  
 This enables clients to send messages directly to your support email (e.g., `support\\@yourcompany.com`), which will be converted into tickets.
 
-(Link to email docs)
+Learn more at [Email Configuration](/docs/doc3-email).
 
 ## Set Up Help Topics
 
@@ -77,12 +79,18 @@ From this section, you can:
 - Update organization name, time zone, and default email  
 - Configure attachment limits, ticket numbering, and user registration rules
 
-> **Tip:**  
-> Review every tab in **Admin Panel → Settings** (System, Tickets, Emails, Users, Agents) to customize osTicket for your organization.
+<Callout type="info">
+ **Tip**  
+Review every tab in **Admin Panel → Settings** (System, Tickets, Emails, Users, Agents) to customize osTicket for your organization.
+</Callout>
 
 ## Next steps
 
 Your osTicket system is now configured and ready to use.  
 You can start receiving tickets via email or web form, manage workflows by department, and monitor support performance.
 
-For next steps, check out (links)
+For next steps, check out:
+
+- [How to configure email fetching and outgoing mail](/docs/doc3-email)
+- [How to set up OAuth 2\.0 authentication for email](/docs/doc4-oauth)
+- [How to export and extract data](/docs/doc5-data)
