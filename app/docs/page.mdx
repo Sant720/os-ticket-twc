@@ -5,6 +5,7 @@ tags: ["installation", "setup", "osTicket", "web server", "PHP", "MySQL"]
 ---
 
 import { Callout } from 'nextra/components'
+import { Steps } from 'nextra/components'
 
 # Getting started
 
@@ -14,7 +15,7 @@ This guide walks you through installing osTicket using its built-in web installe
 
 osTicket is a free, open-source helpdesk system that streamlines how organizations manage support requests. It centralizes tickets from multiple channels—like email, web forms, and phone calls—into a single, easy-to-use dashboard. Designed for teams of all sizes, osTicket helps automate assignments, track performance, and ensure timely responses through built-in features like SLAs, canned replies, and customizable workflows. Whether you’re setting up an IT helpdesk or customer support center, osTicket offers a powerful and flexible foundation to get started quickly.
 
----
+[Learn more](https://osticket.com/)
 
 ## Prerequisites
 
@@ -49,21 +50,95 @@ If unsure, ask your host or database admin before proceeding.
 
 ---
 
-## Getting Started
+## Install osTicket
 
-1. **Download osTicket:**  
-   Get the [latest version](https://osticket.com/download) of osTicket.
+<Steps>
+### Step 1: Download osTicket
+ 
+Get the [latest version](https://osticket.com/download) of osTicket.
 
-2. **Upload the Files:**  
+### Step 2: Upload Files
+ 
    Unzip the archive and upload everything inside the `upload` folder to your desired directory, for example:  
    - `/osticket/`  
    - `/helpdesk/`  
    - `/support/`
 
-   Basic FTP knowledge is useful here.  
-   If you’re new to FTP, review your FTP client’s documentation for uploading files and setting permissions.
-
-3. **Set Permissions:**  
-   The installer must be able to write to:
+    <Callout type="info">
+    Basic FTP knowledge is useful here. If you’re new to FTP, review your FTP client’s documentation for uploading files and setting permissions.
+        </Callout>
+ 
+### Step 3: Set Permissions
+ 
+ The installer must be able to write to:
    ```bash
    include/ost-config.php
+   ```
+   Follow any permission instructions shown by the installer.
+
+</Steps>
+
+
+## Using the Installation Script
+
+Once you’ve uploaded all files and set permissions, complete the installation via a web browser.
+
+1. Open your browser and navigate to your osTicket URL, e\.g.:  
+   ```
+   http://www.yourdomain.com/support
+   ```
+   or directly to the setup path:  
+   ```
+   http://www.yourdomain.com/support/setup/
+   ```
+
+2. The installer automatically checks for:
+   - correct paths  
+   - permissions  
+   - missing requirements
+
+3. Follow the on-screen steps:
+   - Fix any configuration errors before continuing.  
+   - Fill out all required fields in the setup form.  
+   - On successful validation, the installer creates and populates the database and writes the configuration file.
+
+Once complete, osTicket will be installed with basic defaults.  
+You’ll need to perform **post-installation configuration** to make it fully functional.
+
+## Installing via Fantastico (cPanel)
+
+If your hosting provider uses **cPanel**, you can install osTicket through **Fantastico**:
+
+1. Log into your cPanel account.  
+2. Open **Fantastico**.  
+3. Follow the installation prompts for osTicket.
+
+> **Important Notes**
+> 
+> - The Fantastico package (as of Jan 9 2010) sets the default email to `support\@system.com`.  
+>   Update all default email addresses immediately in **System Preferences** and **Department Settings**.  
+> - Fantastico packages may lag behind official releases.  
+>   Check [osTicket.com](https://osticket.com/) for the latest version.
+
+
+## Finishing Up
+
+After successful installation:
+
+1. Log in with the **admin username and password** you created.  
+2. Verify that osTicket loads correctly.  
+3. Secure your installation:
+   - Change file permissions to remove write access:
+     ```bash
+     chmod 644 include/ost-config.php
+     ```
+   - Delete the `/setup/` directory.  
+   - Enable your helpdesk system.
+
+Next, continue with the [Post-Installation Configuration](../post-installation-config) guide.
+
+## Next steps
+
+- [How to Configure osTicket After Installation](../post-installation-config)
+- [How to Configure Email Fetching and Outgoing Mail in osTicket](../email-configuration)
+- [How to Set Up OAuth 2\.0 Authentication for Email in osTicket](../oauth2-email-setup)

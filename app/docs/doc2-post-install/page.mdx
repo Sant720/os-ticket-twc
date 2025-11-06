@@ -1,35 +1,106 @@
 ---
-title: Configuration after installation
-description: Fix common issues encountered while developing or deploying the docs site.
+title: "Configuration"
+description: "Learn how to configure osTicket after installation, including setting up email routing, help topics, departments, and staff accounts."
+tags: ["configuration", "osTicket", "setup", "helpdesk", "email", "departments", "staff"]
 ---
 
 # How to Configure osTicket After Installation
 
-Encounter a snag? Start with these known issues and resolutions before diving deeper.
+After installing **osTicket**, you need to perform additional configuration to make your helpdesk fully operational.  
+This guide walks you through post-installation setup tasks such as configuring email, help topics, departments, and system preferences.
 
-## Installation Hangs
+---
 
-- **Symptom:** `npx create-next-app` or `npm install` stalls on dependency installs.
-- **Fix:** Cancel with `Ctrl+C`, clear `node_modules` if present, and rerun `npm install`. Network hiccups are the usual culprit.
+## Before You Begin
 
-## `next: not found`
+Only staff members with **Admin privileges** can access the **Admin Panel**.  
+Log in using the **username and password** you created during installation.
 
-- **Symptom:** `npm run dev` fails with `sh: 1: next: not found`.
-- **Fix:** Reinstall dependencies (`npm install`). The `next` binary lives in `node_modules/.bin`.
+Once you’re logged in, you can begin configuring your osTicket environment.
 
-## Hydration Mismatch Warning
+---
 
-- **Symptom:** Browser console shows “A tree hydrated but some attributes…”.
-- **Fix:** Disable browser extensions that manipulate the DOM (e.g. Grammarly). They add attributes to `<body>` that React doesn’t expect.
+## Configure Email
 
-## Branch Push Rejected
+osTicket allows you to route any number of email addresses to create tickets automatically.  
+This enables clients to send messages directly to your support email (for example, `support\\@yourcompany.com`), which will be converted into tickets.
 
-- **Symptom:** `git push origin main` fails with `src refspec main does not match any`.
-- **Fix:** Ensure the current branch is `main` and you have at least one commit. Use `git branch -m master main` and `git push --set-upstream origin main` if needed.
+For complete setup instructions, see:  
+[How to Configure Email Fetching and Outgoing Mail in osTicket](../email-configuration)
 
-## Sidebar Missing
+---
 
-- **Symptom:** Running `npm run dev` shows a doc page without the sidebar.
-- **Fix:** Confirm you’re on a `/docs/...` route and that `_meta.json` lists the page. Nextra hides the sidebar on standalone “page” routes.
+## Set Up Help Topics
 
-Need more help? File an issue on [GitHub](https://github.com/Sant720/os-ticket-twc/issues) with reproduction steps.
+Help Topics define how incoming requests are categorized and routed.  
+They determine which department or priority a ticket is assigned to — without requiring the user to choose manually.
+
+**Example:**
+- *Billing Issue* → Routed to **Finance Department**
+- *Login Problem* → Routed to **Technical Support**
+
+To create and manage Help Topics:
+1. Go to **Admin Panel → Manage → Help Topics**.  
+2. Add or edit topics according to your service categories.  
+3. Assign default departments, priorities, or SLA plans as needed.
+
+---
+
+## Create and Manage Departments
+
+Departments allow you to:
+- Categorize incoming tickets  
+- Restrict ticket access based on department assignment  
+- Define internal teams and responsibilities  
+
+**Example:**
+- Department: *Customer Support* → Staff access: Tier 1 agents only  
+- Department: *IT Operations* → Access limited to system admins  
+
+To manage departments:
+1. Navigate to **Admin Panel → Agents → Departments**.  
+2. Add a new department or edit existing ones.  
+3. Assign default email addresses and auto-response settings.
+
+---
+
+## Add Staff Members
+
+You can create unlimited staff accounts to manage tickets.  
+Each staff member belongs to a **Group** (which defines permissions) and a **Department** (which defines ticket access).
+
+### Staff Types
+- **Admin:** Full system privileges, including settings and configuration.  
+- **Staff:** Restricted access, limited to assigned tickets and departments.
+
+To add staff:
+1. Go to **Admin Panel → Agents → Add New Agent**.  
+2. Assign a **Group** and **Department**.  
+3. Configure login credentials and notification preferences.  
+4. Save your changes.
+
+---
+
+## System Preferences
+
+You can control system-wide behaviors and defaults under **Admin Panel → Settings**.
+
+From this section, you can:
+- Enable or disable features  
+- Update organization name, time zone, and default email  
+- Configure attachment limits, ticket numbering, and user registration rules
+
+> **Tip:**  
+> Review every tab in **Admin Panel → Settings** (System, Tickets, Emails, Users, Agents) to customize osTicket for your organization.
+
+---
+
+## Summary
+
+Your osTicket system is now configured and ready to use.  
+You can start receiving tickets via email or web form, manage workflows by department, and monitor support performance.
+
+For next steps, check out:
+- [How to Configure Email Fetching and Outgoing Mail in osTicket](../email-configuration)
+- [How to Set Up OAuth 2\\.0 Authentication for Email in osTicket](../oauth2-email-setup)
+- [How to Export and Extract Data from osTicket](../exporting-data)
