@@ -4,6 +4,9 @@ description: "Understand and configure OAuth 2.0 authentication and authorizatio
 tags: ["osTicket", "OAuth2", "authentication", "authorization", "SSO", "Microsoft", "Google", "Okta"]
 ---
 
+import { Callout } from 'nextra/components'
+import { Steps } from 'nextra/components'
+
 # How to set up OAuth Authentication
 
 Intro
@@ -42,15 +45,22 @@ After successful sign-in, the provider issues a token verifying the user’s ide
 OAuth 2\.0 **Authorization** allows osTicket to connect securely to mail servers — such as Outlook or Gmail — using temporary access tokens.  
 This approach replaces legacy “Basic Authentication” (username + password), which many providers have deprecated.
 
-> **Important Notice**  
-> Microsoft has deprecated older Outlook endpoints used for Modern Authentication (OAuth2) for **email access**.  
-> This does **not** affect user or agent login but can impact token renewal for mail fetching.
 
+<Callout type="warning">
+**Important Notice**  
+Microsoft has deprecated older Outlook endpoints used for Modern Authentication (OAuth2) for **email access**.  
+This does **not** affect user or agent login but can impact token renewal for mail fetching.
+
+</Callout>
+
+
+<Callout type="info">
 If you encounter errors such as:
 ```
-The API version v2 has been depreciated
+The API version v2 has been deprecated
 ```
 follow the steps in the [Microsoft Authorization Guide](../OAuth2/Microsoft%20Authorization%20Guide) to update your configuration.
+</Callout>
 
 ### Benefits
 - No local password storage  
@@ -69,13 +79,14 @@ follow the steps in the [Microsoft Authorization Guide](../OAuth2/Microsoft%20Au
 
 Before enabling OAuth Authentication or Authorization, you need to install the official plugin.
 
-### Step 1: Download the Plugin
+<Steps>
+### Download the Plugin
 
 1. Visit the [osTicket Downloads page](https://osticket.com/download).  
 2. Select **v1\.17 or higher**.  
 3. Under *Authentication Plugins*, download **Authentication :: OAuth2**.
 
-### Step 2: Install the Plugin
+### Install the Plugin
 
 1. Copy the downloaded `.phar` or plugin file to:
    ```
@@ -84,12 +95,14 @@ Before enabling OAuth Authentication or Authorization, you need to install the o
 2. Open osTicket and navigate to:  
    **Admin Panel → Manage → Plugins**
 
-### Step 3: Add and Enable the Plugin
+### Add and Enable the Plugin
 
 1. Click **Add New Plugin**
 2. Install it using the provided interface.
 3. Confirm that the plugin appears under the Installed list.
 4. Change **Status** from `Disabled` → `Active`, then click **Save Changes**.
+</Steps>
+
 
 
 ## Next Steps
@@ -115,5 +128,6 @@ Your system now benefits from:
 - Seamless integration with Microsoft, Google, and Okta
 
 For related tasks, see:
-- [How to Configure Email Fetching and Outgoing Mail in osTicket](../email-configuration)
-- [How to Export and Extract Data from osTicket](../exporting-data)
+- [How to configure email fetching and outgoing mail](/docs/doc3-email)
+- [How to export and extract data](/docs/doc5-data)
+
