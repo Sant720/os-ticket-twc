@@ -1,0 +1,53 @@
+---
+title: Getting Started
+description: Configure your environment and launch the OS Ticket TWC docs locally.
+---
+
+# Getting Started
+
+Follow these steps to clone the repository, install dependencies, and run the documentation site.
+
+## Prerequisites
+
+- Node.js 20 or later (check with `node --version`)
+- npm 10 or later (`npm --version`)
+- Git installed and authenticated with GitHub
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/Sant720/os-ticket-twc.git
+cd os-ticket-twc
+```
+
+## 2. Install Dependencies
+
+Install the project dependencies (including Nextra and the Docs theme):
+
+```bash
+npm install
+```
+
+> If installation stalls, cancel with `Ctrl+C` and rerun the command—it’s usually an npm registry hiccup.
+
+## 3. Start the Dev Server
+
+```bash
+npm run dev
+```
+
+Open your browser to `http://localhost:3000` to view the docs. Edits to `.mdx` files hot-reload automatically.
+
+## 4. Recommended Editors & Extensions
+
+- **VS Code** with the MDX extension for syntax highlighting.
+- **ESLint** and **Prettier** integrations to keep formatting consistent.
+- **GitHub Copilot** or similar tooling is optional but helpful.
+
+## Troubleshooting
+
+- **`next: not found`** — run `npm install` to restore `node_modules`.
+- **Hydration warnings** — disable browser extensions that inject DOM attributes (e.g., Grammarly).
+- **Branch pushes fail** — verify you’re on `main` and your remote is updated (`git status`, `git fetch origin`).
+
+Need more detail? Return to the [Docs Overview](../page) or explore other sections in the sidebar.
