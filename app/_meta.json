@@ -1,0 +1,13 @@
+{
+  "index": {
+    "display": "hidden"
+  },
+  "docs": {
+    "title": "Product Documentation",
+    "type": "page"
+  },
+  "api-docs": {
+    "title": "API docs",
+    "type": "page"
+  }
+}

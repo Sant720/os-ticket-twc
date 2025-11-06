@@ -1,0 +1,49 @@
+---
+title: API Overview
+description: High-level reference for the OS Ticket TWC API surface.
+---
+
+# API Overview
+
+This section documents the endpoints and payloads that power the OS Ticket TWC platform. Use it as a starting point before diving into endpoint-specific guides.
+
+## Base URL
+
+```
+https://api.os-ticket-twc.example.com/v1
+```
+
+## Authentication
+
+All requests require an API key supplied via the `Authorization` header:
+
+```http
+Authorization: Bearer <api-key>
+```
+
+## Sample Endpoint
+
+```http
+GET /tickets
+```
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "id": "TCK-1024",
+      "subject": "Printer offline",
+      "status": "open",
+      "createdAt": "2024-06-18T09:42:11Z"
+    }
+  ]
+}
+```
+
+## Next Steps
+
+- Generate an API key from the admin portal.
+- Review rate limiting details in the upcoming `Rate Limits` page.
+- Explore webhooks to push ticket updates to downstream systems.
