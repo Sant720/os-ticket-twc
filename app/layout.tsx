@@ -55,6 +55,7 @@ export default async function RootLayout({
           banner={banner}
           navbar={navbar}
           pageMap={await getPageMap()}
+          sidebar={{ autoCollapse: true }}
           docsRepositoryBase="https://github.com/Sant720/os-ticket-twc"
           footer={footer}
         >
