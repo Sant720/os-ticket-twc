@@ -4,6 +4,8 @@ description: "Learn how to configure email fetching and outgoing mail in osTicke
 tags: ["osTicket", "email", "SMTP", "IMAP", "POP3", "configuration", "setup"]
 ---
 
+import { Callout } from 'nextra/components'
+
 # Email Fetching and Outgoing Mail
 
 osTicket allows you to set up multiple email addresses to handle your company’s communication channels.  
@@ -20,6 +22,13 @@ This guide explains how to configure **incoming email fetching** and **outgoing 
 
 ## Email Templates
 
+osTicket includes a set of default templated for:
+- Auto-responses
+- Alerts
+- Notices 
+- Staff and client replies
+
+Refer to [Email Templates](https://docs.osticket.com/en/latest/Getting%20Started/Email%20Templates.html) Guide for details on how to customize or add new templates.
 
 ## Routing Incoming Emails
 
@@ -33,6 +42,10 @@ However, it requires configuration at the mail server level.
 1. Access your hosting control panel or mail server configuration.  
 2. Create an alias or pipe that sends emails directly to osTicket’s pipe handler (usually `pipe.php`).  
 3. Verify that your server supports piping.
+
+### 2. POP3/IMAP Polling (Fetching)
+
+POP3/IMAP account polling method is best suited for individuals with remote mail account(s) and/or with limited access to mail delivery settings. Each email address added to the system can have an account associated to it. See [POP3/IMAP Setting Guide]((https://docs.osticket.com/en/latest/Getting%20Started/POP3-IMAP%20Settings.html)).
 
 ## Configuring Outgoing Emails
 
@@ -54,9 +67,13 @@ Each email account can use its own SMTP settings, or you can define a system-wid
    - Password (your email password or app password)
 5. Save the configuration.
 
-> **External SMTP Restrictions**  
-> Some hosting providers (e.g., HostGator) block connections to remote SMTP servers.  
-> If you see “login failure” messages, contact your host or test your connection manually.
+<Callout type="warning">
+**External SMTP Restrictions**  
+Some hosting providers (e.g., HostGator) block connections to remote SMTP servers.  
+If you see “login failure” messages, contact your host or test your connection manually.
+</Callout>
+
+
 
 ### Test Your SMTP Connection
 
@@ -75,9 +92,8 @@ telnet: connect to address 192.0.32.10: Connection refused
 
 In such cases, your hosting provider’s firewall or policy is likely blocking external SMTP traffic.
 
-## Summary
+## Next steps
 
-You’ve successfully configured email fetching and outgoing mail in osTicket!  
-
-For next steps, see:
-(Links)
+You’ve successfully configured email fetching and outgoing mail in osTicket. For next steps, see:
+- [How to set up OAuth 2\.0 authentication for email](/docs/doc4-oauth)
+- [How to export and extract data](/docs/doc5-data)
