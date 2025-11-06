@@ -5,7 +5,11 @@ description: Reference guide for the Dummy Employee REST API, including endpoint
 
 # Employee API Reference
 
-Introduction. 
+This API provides CRUD operations for managing employee records. All responses are returned in **JSON** format. 
+
+- All requests must use **HTTPS**. 
+- The API returns mock data for demo purposes; therefore, database changes are only temporary. 
+- Rate limits or authentication are **not enforced** on this endpoint set. 
 
 ## Base URL
 
@@ -15,8 +19,164 @@ https://dummy.restapiexample.com/api/v1
 
 ## Authentication
 
-## Endpoints overview
+**No authentication is required for this public demo API**. For production systems, you would typicallyt use an API key or token. 
 
+## Endpoints Overview
+
+| Method | Endpoint | Description |
+|----------|----------|----------|
+| `GET`    | `/employees`       | 	Get all employee data     |
+| `GET`    | `/employee/{id}`    | Get a single employee data     |
+| `POST`   | `/create`          | 	Create new record in database     |
+| `PUT`    | `/update/{id}`     | Update an employee record     |
+| `DELETE` | `/delete/{id}`      | Delete an employee record     |
 
 ## Endpoints in Detail
+
+### 1. Get All Employees
+
+**Method:** `GET`
+
+**Endpoint:** `/employees`
+
+**Example:**
+
+```bash
+curl https://dummy.restapiexample.com/api/v1/employees
+```
+
+**Response:**
+
+```json
+{
+"status": "success",
+"data": [
+	{
+	"id": "1",
+	"employee_name": "Tiger Nixon",
+	"employee_salary": "320800",
+	"employee_age": "61",
+	"profile_image": ""
+	},
+	....
+	]
+}
+```
+
+### 2. Get Single Employee
+
+**Method:** `GET`
+
+**Endpoint:** `/employee/{id}`
+
+**Example:**
+
+```bash
+curl https://dummy.restapiexample.com/api/v1//employee/1
+```
+
+**Response:**
+
+```json
+{
+"status": "success",
+"data": [
+	{
+"status": "success",
+"data": {
+"id": "1",
+"employee_name": "Tiger Nixon",
+"employee_salary": "320800",
+"employee_age": "61",
+"profile_image": ""
+}
+},
+	....
+	]
+}
+```
+
+### 3. Create Employee
+
+**Method:** `POST`
+
+**Endpoint:** `/create`
+
+**Headers:**
+```http
+Content-Type: application/json
+```
+
+
+**Request Body:**
+```json
+{"name":"test","salary":"123","age":"23"}
+```
+
+**Example:**
+
+```bash
+curl -X POST https://dummy.restapiexample.com/api/v1/create -H "Content-Type: application/json -d {"name":"test","salary":"123","age":"23"}
+```
+
+**Response:**
+
+```json
+{
+    "status": "success",
+    "data": {
+        "name": "test",
+        "salary": "123",
+        "age": "23",
+        "id": 25
+    }
+}
+```
+
+### 4. Update Employee
+
+**Method:** `PUT`
+
+**Endpoint:** `/update/{id}`
+
+**Example:**
+
+```bash
+curl -X POST https://dummy.restapiexample.com/api/v1/update/20 -H "Content-Type: application/json -d {"name":"test","salary":"123","age":"23"}
+```
+
+**Response:**
+
+```json	
+{
+    "status": "success",
+    "data": {
+        "name": "test",
+        "salary": "123",
+        "age": "23",
+        "id": 25
+    }
+}
+```
+
+### 5. Delete Employee
+
+**Method:** `DELETE`
+
+**Endpoint:** `/delete/{id}`
+
+**Example:**
+
+```bash
+curl -X DELETE https://dummy.restapiexample.com/api/v1/delete/2 
+```
+
+**Response:**
+
+```json	
+{
+    "status": "success",
+    "message": "successfully! deleted Records"
+}
+```
 
