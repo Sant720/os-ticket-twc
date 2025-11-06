@@ -1,0 +1,35 @@
+---
+title: Troubleshooting
+description: Fix common issues encountered while developing or deploying the docs site.
+---
+
+# Troubleshooting
+
+Encounter a snag? Start with these known issues and resolutions before diving deeper.
+
+## Installation Hangs
+
+- **Symptom:** `npx create-next-app` or `npm install` stalls on dependency installs.
+- **Fix:** Cancel with `Ctrl+C`, clear `node_modules` if present, and rerun `npm install`. Network hiccups are the usual culprit.
+
+## `next: not found`
+
+- **Symptom:** `npm run dev` fails with `sh: 1: next: not found`.
+- **Fix:** Reinstall dependencies (`npm install`). The `next` binary lives in `node_modules/.bin`.
+
+## Hydration Mismatch Warning
+
+- **Symptom:** Browser console shows “A tree hydrated but some attributes…”.
+- **Fix:** Disable browser extensions that manipulate the DOM (e.g. Grammarly). They add attributes to `<body>` that React doesn’t expect.
+
+## Branch Push Rejected
+
+- **Symptom:** `git push origin main` fails with `src refspec main does not match any`.
+- **Fix:** Ensure the current branch is `main` and you have at least one commit. Use `git branch -m master main` and `git push --set-upstream origin main` if needed.
+
+## Sidebar Missing
+
+- **Symptom:** Running `npm run dev` shows a doc page without the sidebar.
+- **Fix:** Confirm you’re on a `/docs/...` route and that `_meta.json` lists the page. Nextra hides the sidebar on standalone “page” routes.
+
+Need more help? File an issue on [GitHub](https://github.com/Sant720/os-ticket-twc/issues) with reproduction steps.

@@ -1,0 +1,36 @@
+---
+title: Deployment Guide
+description: Steps to build and deploy the documentation site to production.
+---
+
+# Deployment Guide
+
+Once your documentation content is ready, follow this process to turn the local project into a hosted site.
+
+## 1. Prepare the Build
+
+Run the production build locally to ensure it succeeds:
+
+```bash
+npm run build
+```
+
+This command compiles MDX, generates static assets, and outputs the site to the `.next` directory.
+
+## 2. Configure Environment Variables
+
+The docs currently require no secrets, but if you add integrations (analytics, search, etc.), define them using the Next.js [environment variables guide](https://nextjs.org/docs/app/building-your-application/configuring/environment-variables).
+
+## 3. Deploy Options
+
+- **Vercel (recommended):** Connect the GitHub repository and select the `main` branch. Vercel auto-detects Next.js and runs `npm install`, `npm run build`, and the appropriate start command.
+- **Static Export:** If you need a fully static bundle, run `next build && next export` and host the generated `out` directory on any static host (Netlify, GitHub Pages, S3 + CloudFront).
+- **Docker:** Use a multi-stage build to run `npm install --production` and `npm run build`, then serve with `next start`.
+
+## 4. Post-Deployment Checklist
+
+- Verify the `/docs` sidebar structure and page content.
+- Confirm canonical URLs and metadata render as expected (`view-source` of a deployed page).
+- Set up 404 handling; Nextra provides a default `_not-found` page you can customize.
+
+> Tip: Enable preview deployments so writers can review changes before they merge into `main`.
