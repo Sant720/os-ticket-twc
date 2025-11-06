@@ -1,36 +1,133 @@
 ---
-title: Set Up OAuth Authentication 
-description: Steps to build and deploy the documentation site to production.
+title: "OAuth Authentication"
+description: "Understand and configure OAuth 2.0 authentication and authorization for osTicket, including plugin setup and provider guides for Microsoft, Google, and Okta."
+tags: ["osTicket", "OAuth2", "authentication", "authorization", "SSO", "Microsoft", "Google", "Okta"]
 ---
 
-# How to Set Up OAuth 2.0 Authentication for Email
+# How to set up OAuth Authentication
 
-Once your documentation content is ready, follow this process to turn the local project into a hosted site.
+Modern authentication in **osTicket** is handled through the **OAuth 2\.0 protocol**, which enables secure sign-in and email authorization without storing passwords locally.  
+This guide explains both the **concepts** (Authentication vs. Authorization) and the **steps** to configure OAuth 2\.0 in your osTicket environment.
 
-## 1. Prepare the Build
+---
 
-Run the production build locally to ensure it succeeds:
+## Understanding OAuth 2.0
 
-```bash
-npm run build
+OAuth 2\.0 is an open standard that allows osTicket to delegate access securely to external identity providers — such as **Microsoft**, **Google**, and **Okta** — instead of handling credentials directly.
+
+### Authentication vs. Authorization
+
+| Concept | Purpose | Example |
+|----------|----------|----------|
+| **Authentication** | Verifies *who* the user is. | Agents or end users logging in via Google, Microsoft, or Okta. |
+| **Authorization** | Grants osTicket permission to access external services (like email servers). | osTicket fetching mail from Gmail using OAuth tokens instead of passwords. |
+
+---
+
+## Authentication (Single Sign-On)
+
+OAuth 2\.0 Authentication enables **Single Sign-On (SSO)**, allowing **Agents** and **Users** to log in using existing accounts from trusted identity providers.
+
+**Common Providers:**
+- Microsoft (Azure AD)
+- Google Workspace
+- Okta
+
+When configured, users are redirected to the provider’s secure login page.  
+After successful sign-in, the provider issues a token verifying the user’s identity, allowing them to access osTicket without needing a local password.
+
+### Related Guides
+- [Microsoft Authentication (SSO) Guide](../OAuth2/Microsoft%20Authentication%20(SSO)%20Guide)
+- [Google Authentication (SSO) Guide](../OAuth2/Google%20Authentication%20(SSO)%20Guide)
+- [Okta Authentication (SSO) Guide](../OAuth2/Okta%20Authentication%20(SSO)%20Guide)
+
+---
+
+## Authorization (Email Access)
+
+OAuth 2\.0 **Authorization** allows osTicket to connect securely to mail servers — such as Outlook or Gmail — using temporary access tokens.  
+This approach replaces legacy “Basic Authentication” (username + password), which many providers have deprecated.
+
+> **Important Notice**  
+> Microsoft has deprecated older Outlook endpoints used for Modern Authentication (OAuth2) for **email access**.  
+> This does **not** affect user or agent login but can impact token renewal for mail fetching.
+
+If you encounter errors such as:
 ```
+The API version v2 has been depreciated
+```
+follow the steps in the [Microsoft Authorization Guide](../OAuth2/Microsoft%20Authorization%20Guide) to update your configuration.
 
-This command compiles MDX, generates static assets, and outputs the site to the `.next` directory.
+### Benefits
+- No local password storage  
+- Automatic token refresh  
+- Compliance with modern security standards (OAuth2 scopes)
 
-## 2. Configure Environment Variables
+### Supported Providers
+- Microsoft (Office 365, Exchange Online)
+- Google (Gmail, Google Workspace)
 
-The docs currently require no secrets, but if you add integrations (analytics, search, etc.), define them using the Next.js [environment variables guide](https://nextjs.org/docs/app/building-your-application/configuring/environment-variables).
+### Related Guides
+- [Microsoft Authorization Guide](../OAuth2/Microsoft%20Authorization%20Guide)
+- [Google Authorization Guide](../OAuth2/Google%20Authorization%20Guide)
 
-## 3. Deploy Options
+---
 
-- **Vercel (recommended):** Connect the GitHub repository and select the `main` branch. Vercel auto-detects Next.js and runs `npm install`, `npm run build`, and the appropriate start command.
-- **Static Export:** If you need a fully static bundle, run `next build && next export` and host the generated `out` directory on any static host (Netlify, GitHub Pages, S3 + CloudFront).
-- **Docker:** Use a multi-stage build to run `npm install --production` and `npm run build`, then serve with `next start`.
+## Setting Up the OAuth 2.0 Plugin
 
-## 4. Post-Deployment Checklist
+Before enabling OAuth Authentication or Authorization, you need to install the official plugin.
 
-- Verify the `/docs` sidebar structure and page content.
-- Confirm canonical URLs and metadata render as expected (`view-source` of a deployed page).
-- Set up 404 handling; Nextra provides a default `_not-found` page you can customize.
+### Step 1: Download the Plugin
 
-> Tip: Enable preview deployments so writers can review changes before they merge into `main`.
+1. Visit the [osTicket Downloads page](https://osticket.com/download).  
+2. Select **v1\.17 or higher**.  
+3. Under *Authentication Plugins*, download **Authentication :: OAuth2**.
+
+### Step 2: Install the Plugin
+
+1. Copy the downloaded `.phar` or plugin file to:
+   ```
+   /include/plugins/
+   ```
+2. Open osTicket and navigate to:  
+   **Admin Panel → Manage → Plugins**
+
+### Step 3: Add and Enable the Plugin
+
+1. Click **Add New Plugin**  
+   ![Add Plugin](../_static/images/oauth-authentication/oauth7_add_plugin.png)
+2. Install it using the provided interface.  
+   ![Install Plugin](../_static/images/oauth-authentication/oauth8_install_plugin.png)
+3. Confirm that the plugin appears under the Installed list.  
+   ![Installed Plugin](../_static/images/oauth-authentication/oauth9_installed.png)
+4. Change **Status** from `Disabled` → `Active`, then click **Save Changes**.  
+   ![Activate Plugin](../_static/images/oauth-authentication/oauth10_plugin_active.png)
+
+---
+
+## Next Steps
+
+Once the OAuth 2\.0 plugin is active, proceed to configure authentication and authorization for your preferred provider:
+
+- [Set Up Microsoft OAuth Authentication (SSO)](../OAuth2/Microsoft%20Authentication%20(SSO)%20Guide)
+- [Set Up Google OAuth Authentication (SSO)](../OAuth2/Google%20Authentication%20(SSO)%20Guide)
+- [Set Up Okta OAuth Authentication (SSO)](../OAuth2/Okta%20Authentication%20(SSO)%20Guide)
+- [Configure Microsoft OAuth Authorization for Email](../OAuth2/Microsoft%20Authorization%20Guide)
+- [Configure Google OAuth Authorization for Email](../OAuth2/Google%20Authorization%20Guide)
+
+---
+
+## Summary
+
+You’ve successfully enabled **OAuth 2\.0 Authentication and Authorization** in osTicket.  
+This setup ensures secure access for both **users** (via SSO) and **email systems** (via token-based access).
+
+Your system now benefits from:
+- Centralized identity management  
+- Reduced password management overhead  
+- Compliance with modern security standards  
+- Seamless integration with Microsoft, Google, and Okta
+
+For related tasks, see:
+- [How to Configure Email Fetching and Outgoing Mail in osTicket](../email-configuration)
+- [How to Export and Extract Data from osTicket](../exporting-data)
