@@ -11,15 +11,12 @@ Incoming emails can be converted into support tickets, helping you organize and 
 
 This guide explains how to configure **incoming email fetching** and **outgoing mail delivery** in osTicket.
 
----
 
 ## Before You Begin
 
 - Ensure osTicket is already installed and configured.  
 - You must have **Admin Panel** access.  
 - Confirm that your mail server credentials (username, password, host, and port) are correct.  
-
----
 
 ## Email Templates
 
@@ -31,7 +28,6 @@ osTicket includes a set of default templates for:
 
 You can customize or add new templates by following the [Email Templates Guide](../email-templates).
 
----
 
 ## Routing Incoming Emails
 
@@ -48,8 +44,6 @@ However, it requires configuration at the mail server level.
 
 > See the [Email Piping Guide](../email-piping) for step-by-step details.
 
----
-
 ### 2. POP3/IMAP Polling (Scheduled Fetching)
 POP3/IMAP polling is ideal if you cannot modify mail delivery settings (e.g., using Gmail or external hosts).
 
@@ -65,8 +59,6 @@ Each email address in osTicket can be linked to a POP3 or IMAP account.
 4. Save the configuration.
 
 > See the [POP3/IMAP Settings Guide](../pop3-imap-settings) for detailed setup steps.
-
----
 
 ## Configuring Outgoing Emails
 
@@ -109,8 +101,6 @@ telnet: connect to address 192.0.32.10: Connection refused
 
 In such cases, your hosting provider’s firewall or policy is likely blocking external SMTP traffic.
 
----
-
 ## Allowing SMTP Spoofing (Optional)
 
 You can enable outgoing address spoofing to prevent osTicket from overwriting custom “From” addresses.
@@ -118,8 +108,6 @@ You can enable outgoing address spoofing to prevent osTicket from overwriting cu
 **To enable:**
 1. Navigate to **Admin Panel → Settings → Email Settings**.  
 2. Check **Allow Spoofing (No Overwrite)**.
-
----
 
 ## Outlook Configuration
 
@@ -133,8 +121,6 @@ You can enable outgoing address spoofing to prevent osTicket from overwriting cu
     allowFullScreen
   ></iframe>
 </div>
-
----
 
 ## Gmail Configuration
 
@@ -157,8 +143,6 @@ You can enable outgoing address spoofing to prevent osTicket from overwriting cu
    - [Enable POP for Gmail](https://support.google.com/mail/answer/7104828?hl=en)  
    - [Enable IMAP for Gmail](https://support.google.com/mail/answer/7126229?hl=en)
 
----
-
 ### Step 2: Configure osTicket for Gmail SMTP
 
 In osTicket:
@@ -169,8 +153,6 @@ In osTicket:
    - Password: your Gmail or App Password  
 3. Check **Authentication Required** and **leave Header Spoofing unchecked**.  
 4. Save and test.
-
----
 
 ### Step 3: Check for Common Issues
 
@@ -203,8 +185,6 @@ If you’re using Google Workspace (G-Suite), configure an **SMTP Relay Service*
 3. Use `smtp-relay.gmail.com` as your SMTP server in osTicket.
 
 For more details, see [Google’s SMTP Relay Documentation](https://support.google.com/a/answer/2956491?hl=en).
-
----
 
 ## Summary
 

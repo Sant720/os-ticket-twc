@@ -9,7 +9,6 @@ tags: ["osTicket", "OAuth2", "authentication", "authorization", "SSO", "Microsof
 Modern authentication in **osTicket** is handled through the **OAuth 2\.0 protocol**, which enables secure sign-in and email authorization without storing passwords locally.  
 This guide explains both the **concepts** (Authentication vs. Authorization) and the **steps** to configure OAuth 2\.0 in your osTicket environment.
 
----
 
 ## Understanding OAuth 2.0
 
@@ -21,8 +20,6 @@ OAuth 2\.0 is an open standard that allows osTicket to delegate access securely 
 |----------|----------|----------|
 | **Authentication** | Verifies *who* the user is. | Agents or end users logging in via Google, Microsoft, or Okta. |
 | **Authorization** | Grants osTicket permission to access external services (like email servers). | osTicket fetching mail from Gmail using OAuth tokens instead of passwords. |
-
----
 
 ## Authentication (Single Sign-On)
 
@@ -40,8 +37,6 @@ After successful sign-in, the provider issues a token verifying the user’s ide
 - [Microsoft Authentication (SSO) Guide](../OAuth2/Microsoft%20Authentication%20(SSO)%20Guide)
 - [Google Authentication (SSO) Guide](../OAuth2/Google%20Authentication%20(SSO)%20Guide)
 - [Okta Authentication (SSO) Guide](../OAuth2/Okta%20Authentication%20(SSO)%20Guide)
-
----
 
 ## Authorization (Email Access)
 
@@ -71,8 +66,6 @@ follow the steps in the [Microsoft Authorization Guide](../OAuth2/Microsoft%20Au
 - [Microsoft Authorization Guide](../OAuth2/Microsoft%20Authorization%20Guide)
 - [Google Authorization Guide](../OAuth2/Google%20Authorization%20Guide)
 
----
-
 ## Setting Up the OAuth 2.0 Plugin
 
 Before enabling OAuth Authentication or Authorization, you need to install the official plugin.
@@ -94,16 +87,11 @@ Before enabling OAuth Authentication or Authorization, you need to install the o
 
 ### Step 3: Add and Enable the Plugin
 
-1. Click **Add New Plugin**  
-   ![Add Plugin](../_static/images/oauth-authentication/oauth7_add_plugin.png)
-2. Install it using the provided interface.  
-   ![Install Plugin](../_static/images/oauth-authentication/oauth8_install_plugin.png)
-3. Confirm that the plugin appears under the Installed list.  
-   ![Installed Plugin](../_static/images/oauth-authentication/oauth9_installed.png)
-4. Change **Status** from `Disabled` → `Active`, then click **Save Changes**.  
-   ![Activate Plugin](../_static/images/oauth-authentication/oauth10_plugin_active.png)
+1. Click **Add New Plugin**
+2. Install it using the provided interface.
+3. Confirm that the plugin appears under the Installed list.
+4. Change **Status** from `Disabled` → `Active`, then click **Save Changes**.
 
----
 
 ## Next Steps
 
@@ -115,7 +103,6 @@ Once the OAuth 2\.0 plugin is active, proceed to configure authentication and au
 - [Configure Microsoft OAuth Authorization for Email](../OAuth2/Microsoft%20Authorization%20Guide)
 - [Configure Google OAuth Authorization for Email](../OAuth2/Google%20Authorization%20Guide)
 
----
 
 ## Summary
 

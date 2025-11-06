@@ -1,30 +1,92 @@
 ---
-title: Export and Extract Data
-description: Understand the core building blocks of the OS Ticket TWC documentation site.
+title: "Export and Extract Data"
+description: "Learn how to export, filter, and customize ticket and dashboard data in osTicket using built-in CSV export tools."
+tags: ["osTicket", "data export", "CSV", "tickets", "dashboard", "reporting"]
 ---
 
-# How to Export and Extract Data from osTicket
+# How to Export and Extract Data
 
-This documentation portal is powered by **Next.js 16** running in the App Router with the **Nextra Docs Theme** layered on top. The combination gives us static-first docs with client-side enhancements when needed.
+osTicket provides several ways to **export ticket and dashboard data** into CSV files for reporting or analysis.  
+This guide explains how to extract information from the **Agent Panel → Tickets** view and from the **Dashboard Tab**, as well as how to customize your exported fields.
 
-## Core Layers
+## Before You Begin
 
-- **Next.js App Router** provides filesystem routing and streaming server-rendered React components.
-- **Nextra** converts `.mdx` files into page routes and handles sidebar, navigation, and search indexing.
-- **Tailwind CSS** (via the default Next.js template) powers the landing-page styling and utility classes.
+- You must have **Agent** or **Admin** privileges to access export options.  
+- CSV files can be opened with tools such as Excel, Google Sheets, or any text editor.  
+- Exports include only **metadata** (ticket IDs, statuses, dates, assignees, etc.) — attachments and conversation text are excluded.
 
-## Rendering Flow
+## Exporting Ticket Data (CSV)
 
-1. The App Router resolves a request to the appropriate file in `app/docs`.
-2. Nextra compiles the MDX content, merges metadata from `_meta.json`, and injects it into the shared layout.
-3. `app/layout.tsx` wraps the page with the Nextra `<Layout>` component, providing banner, navbar, and footer slots.
+**Location:** `Agent Panel → Tickets`
 
-## Key Files
+Ticket exports allow agents to download ticket-header metadata in CSV format.  
+You can customize which fields appear and filter results using Queues or Advanced Search.
 
-- `app/layout.tsx` — Connects Nextra’s layout with the site’s fonts and global styles.
-- `app/docs/**/*` — Topic-based docs in MDX, grouped by folder.
-- `theme.config.tsx` — Customizations for navigation, repository links, and logos.
+### 1. Choose Tickets to Export
 
-## Extending the Architecture
+1. Go to **Agent Panel → Tickets**.  
+2. Use **Advanced Search** to refine results by:  
+   - Ticket Data  
+   - User-related Data  
+   - Organization Data  
+   - Form Information  
+3. When ready, click **Export** at the top-right corner to download a CSV file.
 
-Add new sections by dropping MDX files into `app/docs`, or expose reusable React blocks through `mdx-components.js`. The Nextra theme automatically updates the sidebar based on the content structure.
+### 2. Customize Export Fields
+
+You can decide which columns appear in your exported CSV.
+
+1. Navigate to **Admin Panel → Settings → Tickets → Queues**.  
+2. Under **Export Picker**, add or remove the fields you want to include.  
+3. Save your changes.  
+
+### 3. View Ticket Header Information
+
+Each ticket’s header displays key metadata drawn from the built-in Ticket Details form.  
+This is the same information available through CSV export.
+
+
+## Using Advanced Search
+
+`Advanced Search` lets you filter tickets by specific criteria before export.  
+Use it to segment results by:
+
+- **Ticket Information** (e.g., status, priority, SLA)  
+- **User Information** (requester email, organization)  
+- **Form Information** (custom fields)  
+
+> See the [Advanced Search Guide](../Agent/Tickets/Advanced%20Search) for detailed usage instructions.
+
+## Exporting Dashboard Data (CSV)
+
+**Location:** `Agent Panel → Dashboard Tab`
+
+The **Dashboard** provides an overview of ticket trends, workload, and performance metrics.  
+You can export summarized activity data to CSV for long-term reporting.
+
+### 1. Filter Your Dashboard View
+
+Use the filters at the top of the Dashboard to limit data by:
+- Date range  
+- Department  
+- Help Topic  
+- Assigned Agent  
+
+### 2. Export the Dashboard Data
+
+At the bottom of the Dashboard view, click **Export** to download a CSV snapshot of your current filters.
+
+
+The exported file contains ticket-activity metadata suitable for trend analysis or external reporting.
+
+## Summary
+
+You can now efficiently export ticket and dashboard data in osTicket for analysis or archiving.  
+
+| Task | Where to Go | Output |
+|------|--------------|--------|
+| Export ticket metadata | Agent Panel → Tickets | CSV file of selected fields |
+| Customize export fields | Admin Panel → Settings → Tickets → Queues | Tailored columns |
+| Export dashboard statistics | Agent Panel → Dashboard | CSV snapshot of metrics |
+
+For deeper filtering or data modeling, combine osTicket’s CSV exports with external tools such as Google Sheets or Power BI.
