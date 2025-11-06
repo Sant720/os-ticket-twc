@@ -31,7 +31,7 @@ const banner = (
 
 const navbar = (
   <Navbar
-    logo={<b>Nextra</b>}
+    logo={<b>Santiago Bolivar | Technical Writer Challenge </b>}
     // Add additional navbar props here if needed.
   />
 );

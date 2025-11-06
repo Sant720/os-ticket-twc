@@ -7,7 +7,10 @@ export default function Home() {
             This is a Technical Writer Challenge for Fullstack.
           </h1>
           <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-           I've created this documentation site using Nextra, a powerful documentation framework built on Next.js. Explore the docs to learn more!
+           I will focus on improvements to structure, readability, navigation, and technical formatting of existing documentation for osTicket. 
+          </p>
+          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+           Also, I am including a quick REST services API reference guide for a dummy employee API. 
           </p>
         </div>
         <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
